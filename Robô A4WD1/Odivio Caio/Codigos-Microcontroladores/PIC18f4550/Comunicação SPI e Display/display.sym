@@ -1,0 +1,124 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @SCRATCH
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     @INTERRUPT_AREA
+018     @INTERRUPT_AREA
+019     x
+01A     contador
+01B     lcd_init.i
+01C     lcd_init.@SCRATCH1
+01D     lcd_init.@SCRATCH2
+023     ssp_isr.@SCRATCH1
+024     @PRINTF_D_79.P1
+024     @PRINTF_X_79.P2
+025     @PRINTF_X_79.P1
+025     @PRINTF_D_79.P2
+026     @PRINTF_D_79.@SCRATCH1
+027     @PRINTF_D_79.@SCRATCH2
+028     @PRINTF_D_79.@SCRATCH3
+029     @PRINTF_D_79.@SCRATCH4
+02A     lcd_putc.c
+02A     @DIV88.P1
+02B     @DIV88.P1
+02B     @delay_ms1.P2
+02B     lcd_gotoxy.x
+02C     lcd_gotoxy.y
+02C     @DIV88.@SCRATCH1
+02D     lcd_gotoxy.address
+02E     lcd_gotoxy.@SCRATCH1
+02F     lcd_send_byte.address
+030     lcd_send_byte.n
+031     lcd_read_byte.low
+031     lcd_send_byte.@SCRATCH1
+032     lcd_read_byte.high
+032     lcd_send_nibble.nibble
+033.0   lcd_read_nibble.retval_0
+033     lcd_read_nibble.retval
+033.1   lcd_read_nibble.retval_1
+033.2   lcd_read_nibble.retval_2
+033.3   lcd_read_nibble.retval_3
+033     lcd_read_byte.@SCRATCH1
+F83     PSP_DATA
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB     CCP_2_LOW
+FBB-FBC CCP_2
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE-FBF CCP_1
+FBF     CCP_1_HIGH
+FE9-FEA @WRITE_PROGRAM_MEMORY.P1
+FE9-FEA @READ_PROGRAM_MEMORY.P2
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+01E6  @delay_ms1
+00AA  LCD_INIT_STRING
+0160  lcd_send_nibble
+010C  lcd_read_nibble
+013E  lcd_read_byte
+01A4  lcd_send_byte
+03FE  lcd_init
+020C  lcd_gotoxy
+0230  lcd_putc
+00FE  externa
+03A4  ssp_isr
+00C8  @const89
+0272  @PRINTF_X_79
+00E4  @const93
+02B2  @DIV88
+02DA  @PRINTF_D_79
+0492  MAIN
+0492  @cinit
+
+Project Directory:
+    C:\Users\Odivio Caio\Desktop\Colonia-de-Robo\Robô A4WD1\Odivio Caio\Codigos-Microcontroladores\PIC18f4550\Comunicação SPI e Display\
+
+Project Files:
+    display.c
+    18F4550.H
+    flex_lcd.c
+
+Units:
+    C:\Users\Odivio Caio\Desktop\Colonia-de-Robo\Robô A4WD1\Odivio Caio\Codigos-Microcontroladores\PIC18f4550\Comunicação SPI e Display\display.c (main)
+
+Compiler Settings:
+    Processor:      PIC18F4550
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      display.err
+    Ext Symbols: display.esym
+    INHX32:      display.hex
+    Symbols:     display.sym
+    List:        display.lst
+    Debug/COFF:  display.cof
+    Project:     display.PJT
+    Call Tree:   display.tre
+    Statistics:  display.sta
