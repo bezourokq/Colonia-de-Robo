@@ -1,0 +1,212 @@
+CCS PCH C Compiler, Version 4.074, 38112               06-Apr-15 14:59
+
+               Filename: E:\CCS C Projects 3 11.28.2014\novapasa\only_SPI.lst
+
+               ROM used: 292 bytes (1%)
+                         Largest free fragment is 32472
+               RAM used: 33 (2%) at main() level
+                         33 (2%) worst case
+               Stack:    1 worst case (0 in main + 1 for interrupts)
+
+*
+0000:  GOTO   00CA
+*
+0008:  MOVWF  05
+000A:  MOVFF  FD8,06
+000E:  MOVFF  FE0,07
+0012:  MOVLB  0
+0014:  MOVFF  FE9,0D
+0018:  MOVFF  FEA,08
+001C:  MOVFF  FE1,09
+0020:  MOVFF  FE2,0A
+0024:  MOVFF  FD9,0B
+0028:  MOVFF  FDA,0C
+002C:  MOVFF  FF3,14
+0030:  MOVFF  FF4,15
+0034:  MOVFF  FFA,16
+0038:  MOVFF  00,0F
+003C:  MOVFF  01,10
+0040:  MOVFF  02,11
+0044:  MOVFF  03,12
+0048:  MOVFF  04,13
+004C:  BTFSS  FF2.4
+004E:  GOTO   0058
+0052:  BTFSC  FF2.1
+0054:  GOTO   00AA
+0058:  BTFSS  FF0.3
+005A:  GOTO   0064
+005E:  BTFSC  FF0.0
+0060:  GOTO   00BA
+0064:  MOVFF  0F,00
+0068:  MOVFF  10,01
+006C:  MOVFF  11,02
+0070:  MOVFF  12,03
+0074:  MOVFF  13,04
+0078:  BSF    0E.7
+007A:  MOVFF  0D,FE9
+007E:  MOVFF  08,FEA
+0082:  MOVFF  09,FE1
+0086:  MOVFF  0A,FE2
+008A:  MOVFF  0B,FD9
+008E:  MOVFF  0C,FDA
+0092:  MOVFF  14,FF3
+0096:  MOVFF  15,FF4
+009A:  MOVFF  16,FFA
+009E:  MOVF   05,W
+00A0:  MOVFF  07,FE0
+00A4:  MOVFF  06,FD8
+00A8:  RETFIE 0
+.................... #include <18f2520.h> 
+.................... //////// Standard Header file for the PIC18F2520 device //////////////// 
+.................... #device PIC18F2520 
+.................... #list 
+....................  
+.................... #use delay(internal=4Mhz) 
+....................  
+.................... int distancia_1 = 0; 
+.................... int distancia_2 = 0; 
+.................... int ultima_distancia = 0; 
+.................... int x = 0; 
+.................... int y = 0; 
+.................... int x0 = 0; 
+.................... int y0 = 0; 
+.................... int u = 0; 
+.................... int u0 = 0; 
+....................  
+.................... //Interrupçao para exerna 0 
+.................... #INT_EXT 
+.................... void externa_0(void){ 
+....................    if(input(PIN_B0)){ 
+00AA:  BSF    F93.0
+00AC:  BTFSS  F81.0
+00AE:  BRA    00B4
+....................     distancia_1 = distancia_1 + 1; 
+00B0:  MOVLW  01
+00B2:  ADDWF  18,F
+....................    } 
+.................... } 
+.................... //Interrupção para externa 1 
+00B4:  BCF    FF2.1
+00B6:  GOTO   0064
+.................... #INT_EXT1 
+.................... void externa_1(void){ 
+....................    if(input(PIN_B1)){ 
+00BA:  BSF    F93.1
+00BC:  BTFSS  F81.1
+00BE:  BRA    00C4
+....................    distancia_2 = distancia_2 + 1; 
+00C0:  MOVLW  01
+00C2:  ADDWF  19,F
+....................    } 
+.................... } 
+....................  
+.................... //#int_ssp 
+.................... //void ssp_isr(void){ 
+....................   // if(SPI_DATA_is_IN()) { 
+....................      //x = spi_read();  
+....................      //x = 15; 
+....................      //spi_write(x); 
+....................    //} 
+.................... //} 
+....................  
+00C4:  BCF    FF0.0
+00C6:  GOTO   0064
+.................... int AnguloTrajeto(){ 
+....................    u = u0 + (distancia_1*60 - distancia_2*60)/9600; 
+.................... } 
+....................  
+.................... int coseno(int ul){ 
+....................    return 2; 
+.................... } 
+....................  
+.................... int seno(int ul){ 
+....................    return 2; 
+.................... } 
+....................  
+.................... int MCinematico(){ 
+....................  x = x0 + (distancia_1*60 + distancia_2*60)*(3,14/120)/coseno(u); 
+....................  y = y0 + (distancia_1*60 + distancia_2*60)*(3,14/30)/seno(u); 
+.................... } 
+....................  
+.................... void main() 
+....................    { 
+00CA:  CLRF   FF8
+00CC:  BCF    FD0.7
+00CE:  BSF    0D.7
+00D0:  CLRF   FEA
+00D2:  CLRF   FE9
+00D4:  MOVLW  60
+00D6:  MOVWF  FD3
+00D8:  MOVF   FD3,W
+00DA:  MOVF   FC1,W
+00DC:  ANDLW  C0
+00DE:  IORLW  0F
+00E0:  MOVWF  FC1
+00E2:  MOVLW  07
+00E4:  MOVWF  FB4
+00E6:  CLRF   18
+00E8:  CLRF   19
+00EA:  CLRF   1A
+00EC:  CLRF   1B
+00EE:  CLRF   1C
+00F0:  CLRF   1D
+00F2:  CLRF   1E
+00F4:  CLRF   1F
+00F6:  CLRF   20
+....................    setup_spi(spi_slave | spi_h_to_l); 
+00F8:  BCF    FC6.5
+00FA:  BCF    F94.5
+00FC:  BSF    F94.4
+00FE:  BSF    F92.5
+0100:  BSF    F94.3
+0102:  MOVLW  34
+0104:  MOVWF  FC6
+0106:  MOVLW  40
+0108:  MOVWF  FC7
+....................    enable_interrupts(INT_EXT); 
+010A:  BSF    FF2.4
+....................    enable_interrupts(INT_EXT1); 
+010C:  BSF    FF0.3
+....................    enable_interrupts(INT_RB); 
+010E:  BSF    FF2.3
+....................    enable_interrupts(INT_SSP); 
+0110:  BSF    F9D.3
+....................    enable_interrupts(GLOBAL); 
+0112:  MOVLW  C0
+0114:  IORWF  FF2,F
+....................     
+....................   
+....................  
+....................    while(1) 
+....................    { 
+....................       //if(ultima_distancia == distancia_1 || ultima_distancia == distancia_1+1){ 
+....................       // spi_write(1); 
+....................       // ultima_distancia = distancia_1; 
+....................       //} 
+....................    //delay_ms(40); 
+....................    //if(spi_read() == 1){ 
+....................       //spi_write(distancia_1); 
+....................    //}else if(spi_read() == 0){ 
+....................       distancia_2 = spi_read(); 
+0116:  MOVFF  FC9,19
+....................       spi_write(2); 
+011A:  MOVF   FC9,W
+011C:  MOVLW  02
+011E:  MOVWF  FC9
+0120:  RRCF   FC7,W
+0122:  BNC   0120
+....................   // } 
+.................... } 
+0124:  BRA    0116
+....................    } 
+....................  
+0126:  SLEEP 
+
+Configuration Fuses:
+   Word  1: 0800   NOIESO NOFCMEN INTRC_IO
+   Word  2: 1E1E   BROWNOUT NOWDT BORV20 PUT WDT32768
+   Word  3: 8300   PBADEN CCP2C1 NOLPT1OSC MCLR RESERVED
+   Word  4: 0081   STVREN NODEBUG NOLVP NOXINST RESERVED
+   Word  5: C00F   NOPROTECT NOCPD NOCPB
+   Word  6: E00F   NOWRT NOWRTD NOWRTC NOWRTB
+   Word  7: 400F   NOEBTR NOEBTRB

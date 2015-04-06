@@ -1,0 +1,46 @@
+
+ROM used: 292 (1%)
+          292 (1%) including unused fragments
+
+          1 Average locations per line
+          14 Average locations per statement
+
+RAM used: 33 (2%) at main() level
+          33 (2%) worst case
+
+Stack used: 1 worst case (out of 30 total available)
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   82    21 100  only_SPI.c
+  381     0   0  18f2520.h
+----- -----
+  463    21 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     16   3   0    57  2.3  externa_0
+0     16   3   0    57  2.3  externa_1
+0     94  16   0   193  2.7  MAIN
+
+Program metrics:
+    Functions               3
+    Statements              21
+    Comments                114
+    Volume (V)              409
+    Difficilty (D)          7.5
+    Effort to implement (E) 3064
+    Time to implement (T)   3 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   2
+    Maintainability (MI)    108
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00002     4  0  
+00004-00006     0  4  
+00008-000A8   162  0  
+000AA-07FFE   126  32472  
+
+
+

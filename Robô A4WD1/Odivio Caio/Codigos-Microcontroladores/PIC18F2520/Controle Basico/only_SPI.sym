@@ -1,0 +1,81 @@
+000     @SCRATCH
+001     @SCRATCH
+001     _RETURN_
+002     @SCRATCH
+003     @SCRATCH
+004     @SCRATCH
+005     @INTERRUPT_AREA
+006     @INTERRUPT_AREA
+007     @INTERRUPT_AREA
+008     @INTERRUPT_AREA
+009     @INTERRUPT_AREA
+00A     @INTERRUPT_AREA
+00B     @INTERRUPT_AREA
+00C     @INTERRUPT_AREA
+00D     @INTERRUPT_AREA
+00E     @INTERRUPT_AREA
+00F     @INTERRUPT_AREA
+010     @INTERRUPT_AREA
+011     @INTERRUPT_AREA
+012     @INTERRUPT_AREA
+013     @INTERRUPT_AREA
+014     @INTERRUPT_AREA
+015     @INTERRUPT_AREA
+016     @INTERRUPT_AREA
+017     @INTERRUPT_AREA
+018     distancia_1
+019     distancia_2
+01A     ultima_distancia
+01B     x
+01C     y
+01D     x0
+01E     y0
+01F     u
+020     u0
+FB4.6   C1OUT
+FB4.7   C2OUT
+FBB-FBC CCP_2
+FBB     CCP_2_LOW
+FBC     CCP_2_HIGH
+FBE     CCP_1_LOW
+FBE-FBF CCP_1
+FBF     CCP_1_HIGH
+FE9-FEA @READ_PROGRAM_MEMORY.P1
+FE9-FEA @WRITE_PROGRAM_MEMORY.P2
+FF6-FF8 @READ_PROGRAM_MEMORY.P1
+FF6-FF8 @WRITE_PROGRAM_MEMORY.P2
+
+ROM Allocation:
+00AA  externa_0
+00BA  externa_1
+00CA  MAIN
+00CA  @cinit
+
+Project Directory:
+    E:\CCS C Projects 3 11.28.2014\novapasa\
+
+Project Files:
+    only_SPI.c
+    18f2520.h
+
+Units:
+    E:\CCS C Projects 3 11.28.2014\novapasa\only_SPI.c (main)
+
+Compiler Settings:
+    Processor:      PIC18F2520
+    Pointer Size:   16
+    ADC Range:      0-255
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    Errors:      only_SPI.err
+    Ext Symbols: only_SPI.esym
+    INHX32:      only_SPI.hex
+    Symbols:     only_SPI.sym
+    List:        only_SPI.lst
+    Debug/COFF:  only_SPI.cof
+    Project:     only_SPI.PJT
+    Call Tree:   only_SPI.tre
+    Statistics:  only_SPI.sta
